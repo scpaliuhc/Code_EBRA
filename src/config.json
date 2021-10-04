@@ -1,0 +1,36 @@
+{
+    "DH":{
+        "scheme":"UDH", 
+        "candiate":"UDH,ISGAN,DS,None",
+        "path":"checkpoint",
+        "H_name":"UDHAE_hide.pth",
+        "R_name":"UDHAE_reveal.pth"
+    },
+
+    "PEEL":{
+        "scheme":"None", 
+        "candidate":"PEEL,PEELO,None",
+        "path":"checkpoint",
+        "name":"PEEL_RB8.pth",
+        "nameCandidate":"PEELO_RB5.pth,PEEL_RB8.pth",
+        "size":25,
+        "rb":8,
+        "scale":0.09
+    },
+   
+    "Baseline":{
+        "scheme":"FGSM", 
+        "candiate":"GaussianNoise,GaussianBlur,MedianBlur,Resize,None,Lattice,FGSM",
+        "size":5,
+        "sigma":2, 
+        "scale":0.05,
+        "channel":3,
+        "RC":"r",
+        "C1":1,
+        "C2":1,
+        "C3":1,
+        "ep":0.05
+    },
+    "Device":"cuda:0",
+    "Image_path":"Results/FGSM0.05"
+}

@@ -1,0 +1,31 @@
+Pytorch implementation of paper "PEEL: A Provable Removal Attack on Deep Hiding".
+
+* Requirements:
+You need pytorch 1.7.1 with torchvision 0.8.2 to run this. The code has been tested with Python 3.7 and runs both on Unbuntu 20.04 and Windows 10. Other main libararies used in the code include: piq 0.5.4; pillow 8.2.0; opencv-python 4.5.2; scikit-image 0.18.1; numpy 1.20.2. 
+
+* Data:
+We use 80000 images for training models and 2000 images for evaluating removal attacks. All images are randomly sampled from CelebA that can be downloaded from https://drive.google.com/open?id=0B7EVK8r0v71pWEZsZE9oNnFzTm8. Please prepare these images ready before running any codes. The data directory has the following structure:
+<data_root>/
+    train/
+        train_image1.jpg
+        train_image2.jpg
+        ...
+    evaluate/
+        evaluate_image1.jpg
+        evaluate_image2.jpg
+        ...
+
+* Running:
+Before the removal attack, you will need to train all involved models (e.g. deep hiding models, inpainting models, and auto-encoder). Please note that, if you want to enhance the deep hiding schemes, train the auto-encoder first. For example, use
+
+python train_main.py --scheme AE 
+
+There are additional parameters for train_main.py. Use
+
+python train_main.py --help
+
+After training all involved models, you can modify the values in /src/config.json to determine the removal attack scheme, the target deep hiding scheme, and the corresponding hyper-parameters. Please make sure that one of the "scheme" fields in "PEEL" and "Baseline" is "None". Afterwards, you can execute removal attacks by running
+
+python removal_attack.py
+
+This command will produce visulization results and the statistical results (00_result.txt) that include the average PSNR and VIF values in the folder, which is specified by the field of "Example_path" in the config.json file.
