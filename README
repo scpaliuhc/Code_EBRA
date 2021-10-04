@@ -29,3 +29,6 @@ After training all involved models, you can modify the values in /src/config.jso
 python removal_attack.py
 
 This command will produce visulization results and the statistical results (00_result.txt) that include the average PSNR and VIF values in the folder, which is specified by the field of "Example_path" in the config.json file.
+
+Pretrained models:
+百度网盘/论文工作/PEEL/checkpoints
